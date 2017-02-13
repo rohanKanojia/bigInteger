@@ -69,6 +69,10 @@ public:
   friend bool operator>=(const Integer& b, const Integer& a);
   friend bool operator==(const Integer& a, const Integer& b);
   friend Integer absolute(const Integer& a);
+  friend Integer operator%(const Integer& a, const Integer& b);
+  friend Integer operator<<(const Integer& a, const Integer& b);
+  friend Integer operator>>(const Integer& a, const Integer& b);
+  friend bool operator<(const Integer& b, const Integer& a);
   void set_integer(const char buffer[]);
 };
 #endif

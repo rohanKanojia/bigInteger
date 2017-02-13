@@ -268,3 +268,48 @@ void subString(char buffer[], char num[], int start, int end)
   }
   buffer[i] = '\0';
 }
+
+Integer operator%(const Integer& a, const Integer& b)
+{
+  Integer q, r;
+  q = a / b;
+  q = q * b;
+  r = a - q;
+  return r;
+}
+
+Integer operator>>(const Integer& a, const Integer& b)
+{
+  Integer i;
+  Integer res = a, two, one;
+  i.set_integer("0");
+  two.set_integer("2");
+  one.set_integer("1");
+  res = a;
+  for(; i < b; i = i + one) {
+    res = res / two;
+  }
+  return res;
+}
+
+Integer operator<<(const Integer& a, const Integer& b)
+{
+  Integer i, one;
+  i.set_integer("0");
+  one.set_integer("1");
+  Integer res = a, two;
+  two.set_integer("2");
+  while(i < b) {
+    res = res * two;
+    i = i + one;
+  }
+  return res;
+}
+
+bool operator<(const Integer& b, const Integer& a)
+{
+  if(a == b)
+    return false;
+  else
+    return !(operator>(b, a));
+}
