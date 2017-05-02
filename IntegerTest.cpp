@@ -26,6 +26,10 @@ int main() {
   res = a1 >> one;
   cout << a1 << " >> " << 1 << " : " << res << endl;
 
+  Integer aBigInt;
+  cout << "Enter an Integer : ";
+  cin >> aBigInt;
+  cout << "You entered : " << aBigInt << endl;
   return 0;
 }
 

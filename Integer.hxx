@@ -56,6 +56,7 @@ public:
       size = 1;
   }
   friend std::ostream& operator<<(std::ostream& tmp, const Integer& a);
+  friend std::istream& operator>>(std::istream& aStream, Integer& a);
   friend bool operator>(const Integer& b, const Integer& a);
   friend Integer operator+(const Integer& a, const Integer& b);
   friend Integer operator-(const Integer& b, const Integer& a);

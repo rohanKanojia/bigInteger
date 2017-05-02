@@ -18,6 +18,13 @@ std::ostream& operator<<(std::ostream& tmp, const Integer& a) {
   return tmp;
 }
 
+std::istream& operator>>(std::istream& aStream, Integer& a) {
+  char aStr[SIZE];
+  aStream >> aStr;
+  a.set_integer(aStr);
+  return aStream;
+}
+
 bool operator>(const Integer& b, const Integer& a) {
   if(b.sign == '-' && a.sign == '+') {
     return false;
@@ -67,7 +74,7 @@ Integer operator+(const Integer& a, const Integer& b) {
 
 Integer operator-(const Integer& b, const Integer& a) {
   Integer res;
-  if(b > a) {
+  if(b >= a) {
     res = subtractionProcess(b, a);
   }
   else {
