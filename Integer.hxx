@@ -16,6 +16,7 @@ class Integer {
       num[i] = '0';
   }
 public:
+  static Integer ONE, TEN, ZERO;
   Integer() : size(0), capacity(0) {
     capacity = SIZE;
     sign = '+';
@@ -74,6 +75,9 @@ public:
   friend Integer operator<<(const Integer& a, const Integer& b);
   friend Integer operator>>(const Integer& a, const Integer& b);
   friend bool operator<(const Integer& b, const Integer& a);
-  void set_integer(const char buffer[]);
+  friend Integer pow(const Integer& a, int exponent);
+  std::string toString();
+  void set_integer(const char *buffer);
 };
+
 #endif

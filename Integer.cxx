@@ -5,6 +5,26 @@
 #include <cstring>
 #include "Integer.hxx"
 
+Integer initOne() {
+  Integer ONE;
+  ONE.set_integer("1");
+  return ONE;
+}
+
+Integer initTen() {
+  Integer TEN;
+  TEN.set_integer("10");
+  return TEN;
+}
+
+Integer initZero() {
+  Integer ZERO;
+  ZERO.set_integer("0");
+  return ZERO;
+}
+
+Integer Integer::ONE = initOne(), Integer::TEN = initTen(), Integer::ZERO = initZero();
+
 std::ostream& operator<<(std::ostream& tmp, const Integer& a) {
   int i = 0;
   while(i < SIZE && a.num[i] == '0') i++;
@@ -16,6 +36,20 @@ std::ostream& operator<<(std::ostream& tmp, const Integer& a) {
     }
   }
   return tmp;
+}
+
+std::string Integer::toString() {
+  int i;
+  std::string nRet;
+
+  for(i = 0; i < SIZE && num[i] == '0'; i++);
+  if(i == SIZE)
+    nRet.push_back('0');
+  else {
+    while(i < SIZE)
+      nRet.push_back(num[i++]);
+  }
+  return nRet;
 }
 
 std::istream& operator>>(std::istream& aStream, Integer& a) {
@@ -319,4 +353,12 @@ bool operator<(const Integer& b, const Integer& a)
     return false;
   else
     return !(operator>(b, a));
+}
+
+Integer pow(const Integer& aBigInt, int exponent) {
+  Integer nRes = Integer::ONE;
+  for(int i = 0; i < exponent; i++)
+    nRes = nRes * aBigInt;
+
+  return nRes;
 }

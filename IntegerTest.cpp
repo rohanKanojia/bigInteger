@@ -29,7 +29,7 @@ int main() {
   Integer aBigInt;
   cout << "Enter an Integer : ";
   cin >> aBigInt;
-  cout << "You entered : " << aBigInt << endl;
+  cout << "aBigInt^2  : " << pow(aBigInt, 2) << endl;
   return 0;
 }
 
