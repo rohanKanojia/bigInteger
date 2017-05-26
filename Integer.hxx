@@ -70,13 +70,16 @@ public:
   friend Integer operator/(const Integer& b, const Integer& a);
   friend bool operator>=(const Integer& b, const Integer& a);
   friend bool operator==(const Integer& a, const Integer& b);
+  friend bool operator!=(const Integer& a, const Integer& b);
   friend Integer absolute(const Integer& a);
   friend Integer operator%(const Integer& a, const Integer& b);
   friend Integer operator<<(const Integer& a, const Integer& b);
   friend Integer operator>>(const Integer& a, const Integer& b);
   friend bool operator<(const Integer& b, const Integer& a);
   friend Integer pow(const Integer& a, int exponent);
+  friend Integer gcd(const Integer& a, const Integer& b);
   std::string toString();
+  long toLongValue() const;
   void set_integer(const char *buffer);
 };
 

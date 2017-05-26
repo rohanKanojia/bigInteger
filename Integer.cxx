@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 #include <cstring>
+#include <climits>
+#include <stdexcept>
 #include "Integer.hxx"
 
 Integer initOne() {
@@ -50,6 +52,16 @@ std::string Integer::toString() {
       nRet.push_back(num[i++]);
   }
   return nRet;
+}
+
+long Integer::toLongValue() const {
+  if(size > 9) { // It won't fit in long, throw error
+    throw std::invalid_argument("Integer::toLongValue() : Overflow Error! Can't convert this to long");
+  }
+  long nRes = 0;
+  for(int i = SIZE-size; i < SIZE; i++)
+    nRes = nRes*10 + (num[i] - '0');
+  return nRes;
 }
 
 std::istream& operator>>(std::istream& aStream, Integer& a) {
@@ -288,6 +300,10 @@ bool operator==(const Integer& a, const Integer& b)
     return 0;
 }
 
+bool operator!=(const Integer& a, const Integer& b) {
+  return !(a == b);
+}
+
 Integer absolute(const Integer& a)
 {
   Integer minusOne, zero, temp;
@@ -361,4 +377,14 @@ Integer pow(const Integer& aBigInt, int exponent) {
     nRes = nRes * aBigInt;
 
   return nRes;
+}
+
+Integer gcd(const Integer& a, const Integer& b) {
+  Integer A = a, B = b, temp;
+  while(B != Integer::ZERO) {
+    temp = B;
+    B = A%B;
+    A = temp;
+  }
+  return A;
 }
