@@ -33,6 +33,7 @@ int main() {
   cout << "aBigInt^2  : " << pow(aBigInt, 2) << endl;
   long nRet = aBigInt.toLongValue();
   cout << "to long : " << nRet << endl;
+  cout << "to Binary : " << aBigInt.toBinaryString() << endl;
   return 0;
 }
 

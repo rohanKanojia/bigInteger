@@ -79,6 +79,7 @@ public:
   friend Integer pow(const Integer& a, int exponent);
   friend Integer gcd(const Integer& a, const Integer& b);
   std::string toString();
+  std::string toBinaryString();
   long toLongValue() const;
   void set_integer(const char *buffer);
 };

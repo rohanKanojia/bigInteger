@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <unistd.h>
 #include <cstdlib>
 #include <string>
 #include <iostream>
@@ -251,12 +252,14 @@ Integer operator/(const Integer& b, const Integer& a)
     if(k == SIZE) break;
     quotient_digit = findNearestMultiple(tmp, divisor);
     multiple = quotient_digit * divisor;
-    quotient_str[j++] = quotient_digit.num[SIZE - 1];
+    if(quotient_digit.num[SIZE-1])
+      quotient_str[j++] = quotient_digit.num[SIZE - 1];
     tmp = tmp - multiple;
     tmp = addDigitToRight(tmp, dividend.num[++k]);
     tmp.findDigits();
   }
   q.set_integer(quotient_str);
+  q.findDigits();
   q.sign = (a.sign == b.sign) ? '+' : '-';
   return q;
 }
@@ -387,4 +390,17 @@ Integer gcd(const Integer& a, const Integer& b) {
     A = temp;
   }
   return A;
+}
+
+std::string Integer::toBinaryString() {
+  std::string nRet;
+  Integer curDigit(*this), TWO;
+  TWO.set_integer("2");
+  while(curDigit != Integer::ZERO) {
+    Integer remainder = curDigit % TWO;
+    nRet.append(remainder.toString());
+    curDigit = curDigit / TWO;
+    bool exprRes = (curDigit != Integer::ZERO);
+  }
+  return nRet;
 }
