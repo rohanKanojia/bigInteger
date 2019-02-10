@@ -13,4 +13,14 @@ was about. It provides nice visualization of the BigInteger operations using Ncu
 C++.
 
 ## Screenshots:
-![Image 1](screenshots/2015-06-23-115549_1024x768_scrot.png)
+1.) Addition:
+![Addition](screenshots/2015-06-23-115549_1024x768_scrot.png)
+
+2.) Multiplication:
+![Multiplication](screenshots/2015-06-23-115605_1024x768_scrot.png)
+
+3.) Division:
+![Division](screenshots/2015-06-23-115638_1024x768_scrot.png)
+
+4.) Subtraction:
+![Subtraction](screenshots/2015-06-23-115821_1024x768_scrot.png)
